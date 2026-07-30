@@ -3,8 +3,19 @@ import os
 os. system ("cls")
 # Defining Class
 class BookLibrary:
-    Library_books = ["A", "B", "C", "D"]
-    book_borrow = False # book is available 
+    library_books = [
+    "librotrack",
+    "shelfwise",
+    "pagekeeper",
+    "booknest",
+    "stacksystem",
+    "bibliotech",
+    "readregistry",
+    "shelflife",
+    "borrowbase",
+    "libraloop"
+]
+    borrowed_books = { }
     # User Registration Method
     def user_data(self):
         self.name = input("Enter your name: ")
@@ -24,33 +35,41 @@ class BookLibrary:
     # Allowing Users to Borrow Book
     def borrow_book(self):
         self.name = input("Enter your name: ")
-        self.book_name = input("Enter Book Name: ").upper()
-        if self.book_name in BookLibrary.Library_books :
+        self.book_name = input("Enter Book Name: ").lower()
+        if self.book_name in BookLibrary.library_books :
             print("This book is available. Type borrow to borrow it.")
             user_input = input("Type Here: ").lower()
             if user_input == "borrow" :
                 print(f"Book is succesfully borrowed by {self.name}.")
-                BookLibrary.book_borrow = True # book is borrowed now 
-                BookLibrary.Library_books.remove(self.book_name)
+                BookLibrary.borrowed_books.update({self.book_name : self.name})
+                BookLibrary.library_books.remove(self.book_name)
             else:
                 print("Try Again with a valid response.")
         else:
             print("Book is not available yet. Try again later.")
     # Allowing Users to return borrowed book
     def return_book(self):
-        self.name_of_return_book = input("Enter Book Name: ")
-        BookLibrary.Library_books.append(self.name_of_return_book)
-        print("Book is returned successfully! Thankyou <3 ")
+        self.name_of_return_book = input("Enter Book Name: ").lower()
+        if self.name_of_return_book in BookLibrary.borrowed_books:
+            BookLibrary.library_books.append(self.name_of_return_book)
+            BookLibrary.library_books.sort()
+            BookLibrary.borrowed_books.pop(self.name_of_return_book)
+            print("Book is returned successfully! Thankyou <3 ")
+        else:
+            print("This book was not borrowed, or the book name is invalid.")
     # Allowing Librarian to Add New Books
     def add_new_book(self):
-        self.new_book = input("Enter Book Name: ")
-        BookLibrary.Library_books.append(self.new_book)
-        BookLibrary.Library_books.sort()
-        print("Book Library after adding new book: ", BookLibrary.Library_books )
+        self.new_book = input("Enter Book Name: ").lower()
+        if self.new_book in BookLibrary.library_books:
+            print("Book is already present.")
+        else:
+            BookLibrary.library_books.append(self.new_book)
+            BookLibrary.library_books.sort()
+            print("Book Library after adding new book: ", BookLibrary.library_books )
     # Allowing Users to look our books!
     def view_books_menu(self):
         print("Select a book for you!")
-        print("Here's our book menu: ", BookLibrary.Library_books)
+        print("Here's our book menu: ", BookLibrary.library_books)
     # Allowing Users to select what they want.
     def selection_to_do(self):
         while True:
@@ -67,7 +86,7 @@ class BookLibrary:
                     self.choice = int(input("Enter your choice: "))
                     break
                 except ValueError:
-                    print("Please Choose Option Between 0 and 4")
+                    print("Please Choose Option Between 0 and 5")
             if self.choice == 1 :
                 self.user_data()
             elif self.choice == 2 :
