@@ -70,5 +70,4 @@ After each action, you'll be asked to press:
 Free to use and modify for learning purposes.
 
 ## Author
-
 **Hadiqa Hanif** — Beginner, Learner, and Observer
