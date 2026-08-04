@@ -16,7 +16,7 @@ class BookLibrary:
     "libraloop"
 ]
     borrowed_books = { }
-    # User Registration Method
+    # User RegistrationMethod
     def user_data(self):
         self.name = input("Enter your name: ")
         while True:
