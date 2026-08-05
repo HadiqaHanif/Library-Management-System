@@ -66,7 +66,6 @@ After each action, you'll be asked to press:
 | `selection_to_do()` | Runs the main menu loop. |
 
 ## License
-
 Free to use and modify for learning purposes.
 
 ## Author
