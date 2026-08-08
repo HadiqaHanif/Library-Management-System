@@ -31,8 +31,7 @@ python LibraryManagementSystem.py
 
 ## How to Use
 
-When you run the program, you'll see a menu:
-
+When you run the program, you'll see a menu:-
 ```
 0. Exit
 1. Register
