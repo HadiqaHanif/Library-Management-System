@@ -108,7 +108,7 @@ class BookLibrary:
             else:
                 print("Option not available yet.")
             while True:
-                print("Press 'E' to exit and 'M' to return to options dashboard : ")
+                print("Press 'E' to exit and 'M' to return to options dashboard: ")
                 b = input("Enter your choice: ").upper()
                 if b == "E":
                     exit()
@@ -117,4 +117,5 @@ class BookLibrary:
                 else:
                     print("Invalid Input! Select only 'E' or 'M'.")
 user = BookLibrary()
+print("Manager: Hadiqa Hanif")
 user.selection_to_do()
